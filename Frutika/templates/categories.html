@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block main_block%}
+
+	<!-- hero area -->
+    <div class="hero-area hero-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 offset-lg-2 text-center">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Fresh & Organic</p>
+                            <h1>Delicious Seasonal Fruits</h1>
+                            <div class="hero-btns">
+                                <a href="{%static 'shop.html'%}" class="boxed-btn">Fruit Collection</a>
+                                <a href="{%static 'contact.html'%}" class="bordered-btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- hero area end -->
+
+
+<div class="container w-50 mx-auto mt-5 mb-5">
+<h3 class="text-center" style="font-size: 45px;">Our Collections</h3>
+<p style="text-align: justify;line-height: 2;font-size: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, alias doloribus sit aliquid nemo nihil voluptates, accusantium, doloremque hic aliquam veritatis nam itaque. A, ratione numquam unde quibusdam recusandae sit!</p>
+</div>
+
+<!-- product section -->
+<!-- <div class="product-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">	
+                    <h3><span class="orange-text">Our</span> Products</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            {%for c in cat%}
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="{%url 'shop:products' c.id%}"><img src="{{c.image.url}}" alt="" height="300px" width="100%"></a>
+                    </div>
+                    <h5 style="font-size: x-large;color: darkred;">{{c.name}}</h5>
+                    <a href="{%url 'shop:products' c.id%}" class="cart-btn">View</a>
+                </div>
+            </div>
+            {%endfor%}
+            
+        </div>
+    </div>
+</div>
+<!-- end product section -->
+
+{%endblock%}

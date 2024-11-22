@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row" style="height: 2px;">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<div class="container">
+    <div class="row mt-2 p-2">
+        <div class="col-3"></div>
+        <div class="col-6 bg-secondary">
+            <div>
+                <h2 class="text-center fw-bold">Add Stock</h2>
+            </div>
+            <form action="" method="post">
+                {%csrf_token%}
+               
+                  <div class="mb-3">
+                   <center> <label for="exampleFormControlInput1" class="form-label mx-auto">Stock:</label></center>
+                    <input type="number" value="{{pro.stock}}" name="st" class="form-control mx-auto">
+                  </div>
+
+                  
+                  <center><button type="submit" class="btn btn-primary">Submit</button></center>
+
+
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+{%endblock%}

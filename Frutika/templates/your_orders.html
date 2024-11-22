@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+{%block main_block%}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                    <h1>Your Orders</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        
+        <div class="col-6 mt-3">
+            <h3 class="text-center" style="color: darkblue;">Customer name:{{request.user}}</h3>
+            {%for i in orders%}
+             <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{i.product.image.url}}" class="rounded-start" height="220px" width="100%">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Product name: <b style="color: brown;">{{i.product.name}}</b></h5>
+                      <h5 class="card-title">Product price: <b style="color: rgba(247, 89, 116, 0.912);">₹{{i.product.price}}/-</b></h5>
+                      <h5 class="card-title">No.of items: <b style="color: rgb(246, 92, 41);">{{i.no_of_items}}</b></h5>
+                      <h5 class="card-title">Order id: <i style="color: rgb(23, 174, 244);">{{i.order_id}}</i></h5>
+                      <h5 class="card-title" >Ordered on: <i style="color: rgb(1, 87, 87);">{{i.ordered_date}}</i></h5>
+                      <h5 class="card-title">Delivery status: <u style="color: rgb(239, 31, 159);">{{i.delivery_status}}</u></h5>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+        </div>
+        
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{%endblock%}

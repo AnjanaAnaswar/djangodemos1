@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+{%block main_block%}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                    <h1>Product Details</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<div class="single-product mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <img src="{{p.image.url}}" alt="" height="500px">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-content">
+                    <h2 class="fw-bold">{{p.name}}</h2>
+                    <p class="single-product-pricing"><span></span>₹ {{p.price}}</p>
+                    <p>{{p.desc}}</p>
+                    <h4>Stock:{{p.stock}}</h4>
+
+              {%if user.is_superuser%}      
+                 {%if p.stock > 0%}
+                 <p>Product in stock</p>
+                 <a href="{%url 'shop:add_stock' p.id%}" class="cart-btn">Add stock</a>
+                 {%else%}
+                 <p>Product out of stock</p>
+                 <a href="{%url 'shop:add_stock' p.id%}" class="cart-btn">Add stock</a>
+                 {%endif%}
+
+
+                 <!-- if user is normal user -->
+             {%else%}  
+             <div class="single-product-form">
+                <p>Quantity</p>
+                <form action="index.html">
+                    <input type="number" placeholder="0">
+                </form>
+            </div>
+                   
+                {%if p.stock > 0 %}
+                <a href="{%url 'cart:addto_cart' p.id %}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                {%else%}
+                <p>Out of stock</p>
+                {%endif%}
+
+
+              {%endif%}            
+
+                                        
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

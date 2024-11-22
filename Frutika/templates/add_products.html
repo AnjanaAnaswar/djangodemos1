@@ -1,0 +1,72 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row" style="height: 2px;">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<div class="container">
+    <div class="row mt-2 p-2">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div>
+                <h2 class="text-center fw-bold">Add Products</h2>
+            </div>
+            <form action="" method="post" class="border border-2 shadow rounded p-3"  enctype="multipart/form-data">
+                {%csrf_token%}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name of product:</label>
+                    <input type="text" class="form-control" name="na" id="exampleFormControlInput1">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Product image:</label>
+                    <input type="file" class="form-control" name="im" id="exampleFormControlInput1">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Price:</label>
+                    <input type="number" class="form-control" name="pr" id="exampleFormControlInput1">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Stock:</label>
+                    <input type="number" class="form-control" name="st" id="exampleFormControlInput1">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Select category:</label>
+                    <select name="ca" id="">
+                        {%for l in link%}
+                        <option value="{{l.name}}">{{l.name}}</option>
+                        {%endfor%}
+                      </select>
+                  </div>
+                 
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Product description</label>
+                    <input type="text" class="form-control" name="de" id="exampleFormControlInput1">
+                  </div>
+                  <center><button type="submit" class="btn btn-primary">Submit</button></center>
+
+
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+{%endblock%}

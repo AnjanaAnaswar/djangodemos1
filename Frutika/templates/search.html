@@ -1,0 +1,107 @@
+{%extends 'base.html'%}
+{%block main_block%}
+
+{%if products == None%}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                    <h1>Search For:</h1>
+                    <div>
+                        <form action="{%url 'shop:search'%}" method="post">
+                            {%csrf_token%}
+                            <div class="mb-3">
+                                <input type="text" name="se" class="form-control">
+                                <input type="submit" class="btn mt-3">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end breadcrumb section -->
+
+<!-- search results -->
+
+
+
+{%else%}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row" style="height: 2px;">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            
+             <h3 class="text-center mt-3">Search results for:<b class="text-info">{{search}}</b></h3>
+             {%for p in products%}
+             <div class="single-product mt-150 mb-150">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-md-5">
+                             <div class="single-product-img">
+                                 <img src="{{p.image.url}}" alt="" height="250px" width="200px">
+                             </div>
+                         </div>
+                         <div class="col-md-7">
+                             <div class="single-product-content">
+                                 <h3>{{p.name}}</h3>
+                                 <p class="single-product-pricing"><span></span>₹ {{p.price}}</p>
+                                 <div class="single-product-form">
+                                    
+                                     <a href="{%url 'shop:details' p.id%}" class="cart-btn">Details</a>
+                                     <!-- <p><strong>Categories: </strong>Fruit</p> -->
+                                 </div>
+                                 <h4>Share:</h4>
+                                 <ul class="product-share">
+                                     <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                     <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                     <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+                                     <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             
+
+              {%empty%}
+             <!-- if no search result -->
+             <h1 class="text-center text-danger">No results found</h1>
+             {%endfor%}
+
+             
+
+
+
+
+        </div>
+        {%endif%}
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+{%endblock%}

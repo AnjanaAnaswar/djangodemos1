@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h2 class="text-center fw-bold">Movie Details</h2>
+            <div class="card mb-3 mt-3" style="max-width: 540px;height: 300px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{details.image.url}}" height="300px" width="200px" class="rounded-start p-2" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h3 class="card-title text-center">{{details.name}}</h3>
+                      <h5 class="card-title text-center">{{details.year}}</h5>
+                      <p class="card-text text-center">{{details.details}}</p>                      
+                      <div class="d-flex justify-content-between">
+                        <a class="btn btn-outline btn-warning" href="{%url 'update' details.id%}">Edit</a>
+                        <a class="btn btn-outline btn-primary" href="{% url 'delete' details.id %}">Delete</a>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+{%endblock%}

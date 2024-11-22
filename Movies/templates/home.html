@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block main_block%}
+<h1 class="text-center mt-3">Movie List</h1>
+
+<div class="container">
+  <div class="row">
+    {%for m in movies%}
+    <div class="col-3">
+      <div class="card m-4" style="width: 18rem; height:20rem;">
+        <img src="{{m.image.url}}" class="card-img-top height:60%" alt="...">
+        <div class="card-body">
+         <center> <h5 class="card-title">{{m.name}}</h5>
+          <h5 class="card-title">{{m.year}}</h5>
+          
+          <a href="{% url 'details' m.id %}" class="btn btn-primary">Details</a></center>
+        </div>
+      </div>
+    </div>
+ 
+
+
+    {%endfor%}
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- <ol>
+    {%for m in movies%}
+    <li>Movie Details</li>
+    <ul>
+        <li>name:{{m.name}}</li>
+        <li>year:{{m.year}}</li>
+        <li><img src="{{m.image.url}}" alt=""></li>
+        <li>details:{{m.details}}</li>
+
+    </ul>
+    {%endfor%}
+    
+</ol> -->
+
+{%endblock%}
